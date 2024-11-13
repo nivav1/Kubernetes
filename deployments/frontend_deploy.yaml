@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: website
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: website
+        tier: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: website-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
