@@ -1,4 +1,5 @@
 # app.py
+import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -8,7 +9,12 @@ from sqlalchemy import inspect
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://niv:niv123@db-service:5432/mydb'
+
+db_user = os.environ['DB_USERNAME']
+db_password = os.environ['DB_PASSWORD']
+db_name = os.environ['DB_NAME']
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{db_user}:{db_password}@db-service:5432/{db_name}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

@@ -4,7 +4,9 @@
 
 # To apply this project, first make sure you have docker engine, minikube and kubectl installed.
 
-# Start your minikube, apply the files in deployment/, services/ and ingress/ using kubectl apply -f [file_name]
+# Start your minikube, apply the files in prequeries/ then deployment/, services/ and ingress/ using kubectl apply -f [file_name]
+
+# Run "minikube addons enable ingress" to enable Nginx
 
 # To see the application, type "minikube ip" in the terminal and copy the ip into your internet search bar
 

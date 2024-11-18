@@ -32,7 +32,7 @@ export default function Register() {
   // Update your register function
   const registerUser = async () => {
     try {
-        const response = await fetch(`http://doo.doo.com/register`, {
+        const response = await fetch(`http://super.simple.register.com/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

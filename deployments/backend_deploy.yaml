@@ -17,9 +17,22 @@ spec:
       containers:
       - name: backend
         image: website-backend
-        env:
-        - name: DATABASE_URL
-          value: "postgresql://niv:niv123@db-service:5432/mydb"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
+        env:
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_USERNAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: DB_PASSWORD
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: DB_NAME
